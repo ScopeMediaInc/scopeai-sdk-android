@@ -1,15 +1,15 @@
-package com.scopemedia.scopescheck.client;
+package com.scopemedia.api.client;
 
-import com.scopemedia.scopescheck.dto.ScopeMissingArgumentException;
-import com.scopemedia.scopescheck.dto.request.AddMediaRequest;
-import com.scopemedia.scopescheck.dto.request.SimilarImageRequest;
-import com.scopemedia.scopescheck.dto.request.PredictionRequest;
-import com.scopemedia.scopescheck.dto.response.AddMediaResponse;
-import com.scopemedia.scopescheck.dto.response.GetMediaResponse;
-import com.scopemedia.scopescheck.dto.response.ModelResponse;
-import com.scopemedia.scopescheck.dto.response.ScopeResponse;
-import com.scopemedia.scopescheck.dto.response.SimilarImageResponse;
-import com.scopemedia.scopescheck.dto.response.PredictionResponse;
+import com.scopemedia.api.dto.ScopeAIMissingArgumentException;
+import com.scopemedia.api.dto.request.AddMediaRequest;
+import com.scopemedia.api.dto.request.SimilarImageRequest;
+import com.scopemedia.api.dto.request.PredictionRequest;
+import com.scopemedia.api.dto.response.AddMediaResponse;
+import com.scopemedia.api.dto.response.GetMediaResponse;
+import com.scopemedia.api.dto.response.ModelResponse;
+import com.scopemedia.api.dto.response.ScopeResponse;
+import com.scopemedia.api.dto.response.SimilarImageResponse;
+import com.scopemedia.api.dto.response.PredictionResponse;
 
 import java.io.IOException;
 
@@ -27,14 +27,14 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
  * Created by maikel on 2017-03-27.
  */
 
-class ScopeCheckClientImpl implements ScopeCheckClient {
-    private ScopeCheckService service;
+class ScopeAIClientImpl implements ScopeAIClient {
+    private ScopeAIService service;
 
     /**
-     *  Use by {@link ScopeCheckBuilder} to initialise a new {@link ScopeCheckClient}
-     * @param builder {@link ScopeCheckBuilder}
+     *  Use by {@link ScopeAIBuilder} to initialise a new {@link ScopeAIClient}
+     * @param builder {@link ScopeAIBuilder}
      */
-    protected ScopeCheckClientImpl(ScopeCheckBuilder builder) {
+    protected ScopeAIClientImpl(ScopeAIBuilder builder) {
 
         final String clientId = builder.getClientId();
         final String clientSecret = builder.getClientSecret();
@@ -67,7 +67,7 @@ class ScopeCheckClientImpl implements ScopeCheckClient {
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build();
 
-        this.service = retrofit.create(ScopeCheckService.class);
+        this.service = retrofit.create(ScopeAIService.class);
     }
 
     @Override
@@ -77,19 +77,19 @@ class ScopeCheckClientImpl implements ScopeCheckClient {
 
     @Override
     public RequestBuilder<AddMediaResponse> addMedias(AddMediaRequest request) {
-        if (!request.checkAllRequired()) throw new ScopeMissingArgumentException("Please set a media array");
+        if (!request.checkAllRequired()) throw new ScopeAIMissingArgumentException("Please set a media array");
         return new RequestBuilder<>(service.addMedias(request));
     }
 
     @Override
     public RequestBuilder<SimilarImageResponse> getSimilarImages(SimilarImageRequest request) {
-        if (!request.checkAllRequired()) throw new ScopeMissingArgumentException("Please set a mediaId or mediaUrl or base64");
+        if (!request.checkAllRequired()) throw new ScopeAIMissingArgumentException("Please set a mediaId or mediaUrl or base64");
         return new RequestBuilder<>(service.getSimilarImages(request));
     }
 
     @Override
     public RequestBuilder<PredictionResponse> getPrediction(PredictionRequest request) {
-        if (!request.checkAllRequired()) throw new ScopeMissingArgumentException("Please set a (mediaUrl or base64) and a modelId");
+        if (!request.checkAllRequired()) throw new ScopeAIMissingArgumentException("Please set a (mediaUrl or base64) and a modelId");
         return new RequestBuilder<>(service.getPrediction(request));
     }
 
@@ -124,9 +124,9 @@ class ScopeCheckClientImpl implements ScopeCheckClient {
 
         /**
          * Perform request asynchronous
-         * @param callback set a {@link ScopeCallback} with any response class which extends {@link ScopeResponse}
+         * @param callback set a {@link ScopeAICallback} with any response class which extends {@link ScopeResponse}
          */
-        public void performAsync(ScopeCallback<T> callback) {
+        public void performAsync(ScopeAICallback<T> callback) {
             performCallAsync(call, callback);
         }
 
@@ -144,9 +144,9 @@ class ScopeCheckClientImpl implements ScopeCheckClient {
         /**
          * Perform OkHttp call asynchronous
          * @param call {@link Call}
-         * @param callback set a {@link ScopeCallback} with any response class which extends {@link ScopeResponse}
+         * @param callback set a {@link ScopeAICallback} with any response class which extends {@link ScopeResponse}
          */
-        private void performCallAsync(Call<T> call, final ScopeCallback<T> callback) {
+        private void performCallAsync(Call<T> call, final ScopeAICallback<T> callback) {
             call.enqueue(new Callback<T>() {
                 @Override
                 public void onResponse(Call<T> call, Response<T> response) {

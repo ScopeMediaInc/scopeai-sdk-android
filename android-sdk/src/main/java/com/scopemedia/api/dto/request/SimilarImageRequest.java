@@ -1,4 +1,4 @@
-package com.scopemedia.scopescheck.dto.request;
+package com.scopemedia.api.dto.request;
 
 import android.graphics.Bitmap;
 import android.os.Parcel;
@@ -6,8 +6,8 @@ import android.os.Parcelable;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.scopemedia.scopescheck.Utils;
-import com.scopemedia.scopescheck.dto.model.Area;
+import com.scopemedia.api.Utils;
+import com.scopemedia.api.dto.model.Area;
 
 /**
  * Created by maikel on 2017-03-27.
@@ -85,7 +85,7 @@ public class SimilarImageRequest extends ScopeRequest implements Parcelable {
 
     /**
      * Set an area which will be used for the similar images
-     * @param area Area will be used for the similar images. See {@link com.scopemedia.scopescheck.dto.model.Area}
+     * @param area Area will be used for the similar images. See {@link Area}
      * @return SimilarImageRequest
      */
     public SimilarImageRequest setArea(Area area) {

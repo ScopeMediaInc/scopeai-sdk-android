@@ -1,19 +1,20 @@
-package com.scopemedia.scopescheck;
+package com.scopemedia.api.test;
 
-import com.scopemedia.scopescheck.client.ScopeCheckBuilder;
-import com.scopemedia.scopescheck.client.ScopeCheckClient;
-import com.scopemedia.scopescheck.dto.model.Area;
-import com.scopemedia.scopescheck.dto.model.Media;
-import com.scopemedia.scopescheck.dto.model.Model;
-import com.scopemedia.scopescheck.dto.model.Tag;
-import com.scopemedia.scopescheck.dto.request.PredictionRequest;
-import com.scopemedia.scopescheck.dto.request.SimilarImageRequest;
-import com.scopemedia.scopescheck.dto.response.GetMediaResponse;
-import com.scopemedia.scopescheck.dto.response.ModelResponse;
-import com.scopemedia.scopescheck.dto.response.PredictionResponse;
-import com.scopemedia.scopescheck.dto.response.SimilarImageResponse;
+import com.scopemedia.api.client.ScopeAIBuilder;
+import com.scopemedia.api.client.ScopeAIClient;
+import com.scopemedia.api.dto.model.Area;
+import com.scopemedia.api.dto.model.Media;
+import com.scopemedia.api.dto.model.Model;
+import com.scopemedia.api.dto.model.Tag;
+import com.scopemedia.api.dto.request.PredictionRequest;
+import com.scopemedia.api.dto.request.SimilarImageRequest;
+import com.scopemedia.api.dto.response.GetMediaResponse;
+import com.scopemedia.api.dto.response.ModelResponse;
+import com.scopemedia.api.dto.response.PredictionResponse;
+import com.scopemedia.api.dto.response.SimilarImageResponse;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -28,14 +29,14 @@ public class ApiTest {
 
     private static final String CLIENT_ID = "demo";
     private static final String CLIENT_SECRET = "demotestsecret";
-    private ScopeCheckClient client;
+    private ScopeAIClient client;
 
     private Area area = new Area(320, 520, 340, 750);
     private String imageUrl = "https://cdn-images.farfetch-contents.com/11/84/74/89/11847489_8709666_1000.jpg";
 
     @Before
     public void init() {
-        client = new ScopeCheckBuilder(CLIENT_ID, CLIENT_SECRET)
+        client = new ScopeAIBuilder(CLIENT_ID, CLIENT_SECRET)
                 .setDebugMode(true)
                 .setDebugLevel(HttpLoggingInterceptor.Level.BODY)
                 .build();
@@ -53,6 +54,7 @@ public class ApiTest {
         }
     }
 
+    @Ignore
     @Test
     public void getModels() {
         try {

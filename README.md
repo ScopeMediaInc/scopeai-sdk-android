@@ -1,9 +1,9 @@
-ScopeCheck Android SDK
+ScopeAI Android SDK
 ======================
 
-A simple client for the ScopeMedia API _ScopeCheck_
+A simple client for the ScopeAI API _ScopeAI_
 
-* Try the ScopeCheck demo at: https://api.scopemedia.com/#/demo/image-search
+* Try the ScopeAI demo at: https://api.scopemedia.com/#/demo/image-search
 * Sign up for a free account at: https://api.scopemedia.com/#/signup
 * Read the documentation at: https://developer.scopemedia.com/documentation/
 

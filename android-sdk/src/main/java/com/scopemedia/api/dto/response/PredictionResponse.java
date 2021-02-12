@@ -1,11 +1,11 @@
-package com.scopemedia.scopescheck.dto.response;
+package com.scopemedia.api.dto.response;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.scopemedia.scopescheck.dto.model.Tag;
+import com.scopemedia.api.dto.model.Tag;
 
 /**
  * Created by maikel on 2017-03-27.

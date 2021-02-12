@@ -1,4 +1,4 @@
-package com.scopemedia.scopescheck.dto.request;
+package com.scopemedia.api.dto.request;
 
 import android.os.Parcel;
 import android.os.Parcelable;

@@ -1,27 +1,26 @@
-package com.scopemedia.scopescheck.dto.response;
+package com.scopemedia.api.dto.response;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.scopemedia.scopescheck.dto.model.Media;
-import com.scopemedia.scopescheck.dto.request.ScopeRequest;
+import com.scopemedia.api.dto.model.Media;
 
 /**
  * Created by maikel on 2017-03-27.
  */
 
 /**
- * Returns all media files you added to your similar images pool
+ * Return all media files you added to your similar images pool
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class GetMediaResponse extends ScopeResponse implements Parcelable {
+public class AddMediaResponse extends ScopeResponse implements Parcelable {
 
     @JsonProperty("medias")
     private Media[] medias;
 
-    public GetMediaResponse() {
+    public AddMediaResponse() {
     }
 
     /**
@@ -43,20 +42,20 @@ public class GetMediaResponse extends ScopeResponse implements Parcelable {
         dest.writeParcelableArray(medias, PARCELABLE_WRITE_RETURN_VALUE);
     }
 
-    private GetMediaResponse(Parcel in) {
+    private AddMediaResponse(Parcel in) {
         super(in);
         this.medias = (Media[]) in.readParcelableArray(Media.class.getClassLoader());
     }
 
-    public static final Creator<GetMediaResponse> CREATOR = new Creator<GetMediaResponse>() {
+    public static final Creator<AddMediaResponse> CREATOR = new Creator<AddMediaResponse>() {
         @Override
-        public GetMediaResponse[] newArray(int size) {
-            return new GetMediaResponse[size];
+        public AddMediaResponse[] newArray(int size) {
+            return new AddMediaResponse[size];
         }
 
         @Override
-        public GetMediaResponse createFromParcel(Parcel source) {
-            return new GetMediaResponse(source);
+        public AddMediaResponse createFromParcel(Parcel source) {
+            return new AddMediaResponse(source);
         }
     };
 }

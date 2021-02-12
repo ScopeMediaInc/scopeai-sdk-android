@@ -1,4 +1,4 @@
-package com.scopemedia.scopescheck.client;
+package com.scopemedia.api.client;
 
 import okhttp3.logging.HttpLoggingInterceptor;
 
@@ -6,7 +6,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
  * @author Maikel Rehl on 6/7/2017.
  */
 
-public class ScopeCheckBuilder {
+public class ScopeAIBuilder {
     private String appId;
     private String clientId;
     private String clientSecret;
@@ -17,11 +17,11 @@ public class ScopeCheckBuilder {
     private static final String baseUrl = "https://api.scopemedia.com/";
 
     /**
-     * Create a new {@link ScopeCheckBuilder} object with the DEFAULT_APP_ID = 'fashion'
+     * Create a new {@link ScopeAIBuilder} object with the DEFAULT_APP_ID = 'fashion'
      * @param clientId set your ClientID
      * @param clientSecret set your ClientSecret
      */
-    public ScopeCheckBuilder(String clientId, String clientSecret) {
+    public ScopeAIBuilder(String clientId, String clientSecret) {
         this(clientId, clientSecret, DEFAULT_APP_ID);
     }
 
@@ -31,7 +31,7 @@ public class ScopeCheckBuilder {
      * @param clientSecret set your ClientSecret
      * @param appId set your AppID
      */
-    public ScopeCheckBuilder(String clientId, String clientSecret, String appId) {
+    public ScopeAIBuilder(String clientId, String clientSecret, String appId) {
         this.appId = appId;
         this.clientId = clientId;
         this.clientSecret = clientSecret;
@@ -42,7 +42,7 @@ public class ScopeCheckBuilder {
      * @param enable true or false
      * @return ScopeCheckBuilder
      */
-    public ScopeCheckBuilder setDebugMode(boolean enable) {
+    public ScopeAIBuilder setDebugMode(boolean enable) {
         this.debugMode = enable;
         return this;
     }
@@ -52,17 +52,17 @@ public class ScopeCheckBuilder {
      * @param level {@link okhttp3.logging.HttpLoggingInterceptor.Level}
      * @return ScopeCheckBuilder
      */
-    public ScopeCheckBuilder setDebugLevel(HttpLoggingInterceptor.Level level) {
+    public ScopeAIBuilder setDebugLevel(HttpLoggingInterceptor.Level level) {
         this.debugLevel = level;
         return this;
     }
 
     /**
      * Build the client
-     * @return {@link ScopeCheckClient}
+     * @return {@link ScopeAIClient}
      */
-    public ScopeCheckClient build() {
-        return new ScopeCheckClientImpl(this);
+    public ScopeAIClient build() {
+        return new ScopeAIClientImpl(this);
     }
 
     /**

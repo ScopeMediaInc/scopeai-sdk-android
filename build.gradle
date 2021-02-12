@@ -4,21 +4,21 @@ buildscript {
     repositories {
         jcenter()
         mavenLocal()
+        google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.2'
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+        classpath 'com.android.tools.build:gradle:4.1.2'
     }
 }
+
+group = 'com.scopemedia.api'
+version = '1.0'
 
 allprojects {
     repositories {
+        google()
         jcenter()
     }
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
 }
 
 subprojects {
@@ -26,14 +26,14 @@ subprojects {
 
     ext {
         versionCodeNum = 60
-        versionBuildTool = '25.0.2'
+        versionBuildTool = '29.0.2'
         versionCompiler = 24
         versionTarget = 24
         versionMinSdk = 14
-        javaSourceCompatibility = JavaVersion.VERSION_1_7
-        javaTargetCompatibility = JavaVersion.VERSION_1_7
+        javaSourceCompatibility = JavaVersion.VERSION_1_8
+        javaTargetCompatibility = JavaVersion.VERSION_1_8
 
-        okHttp = "3.8.0"
-        retrofit = "2.3.0"
+        okHttp = "4.9.0"
+        retrofit = "2.9.0"
     }
 }

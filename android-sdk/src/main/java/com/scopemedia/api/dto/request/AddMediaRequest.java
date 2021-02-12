@@ -1,11 +1,11 @@
-package com.scopemedia.scopescheck.dto.request;
+package com.scopemedia.api.dto.request;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.scopemedia.scopescheck.dto.model.Media;
+import com.scopemedia.api.dto.model.Media;
 
 /**
  * Created by maikel on 2017-03-27.
@@ -25,7 +25,7 @@ public class AddMediaRequest extends ScopeRequest implements Parcelable {
 
     /**
      * Array of Medias to add to your similar images pool
-     * @param medias List of new medias. See {@link com.scopemedia.scopescheck.dto.model.Media}
+     * @param medias List of new medias. See {@link Media}
      */
     public AddMediaRequest(Media[] medias) {
         this.medias = medias;
@@ -33,7 +33,7 @@ public class AddMediaRequest extends ScopeRequest implements Parcelable {
 
     /**
      * Array of Medias to add to your similar images pool
-     * @param medias List of new medias. See {@link com.scopemedia.scopescheck.dto.model.Media}
+     * @param medias List of new medias. See {@link Media}
      * @return AddMediaRequest
      */
     public AddMediaRequest setMedias(Media[] medias) {
