@@ -1,7 +1,8 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
 
-group = 'com.scopemedia.ScopeAI'
-version = '1.0.1'
+group = 'com.scopemedia.scopeai'
+version = '1.2.0'
 
 android {
     compileSdkVersion versionCompiler
@@ -31,14 +32,16 @@ android {
 
 repositories {
     mavenCentral()
+    google()
     mavenLocal()
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "com.squareup.okhttp3:logging-interceptor:$okHttp"
-    implementation "com.squareup.retrofit2:retrofit:$retrofit"
-    implementation "com.squareup.retrofit2:converter-jackson:$retrofit"
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile "com.squareup.okhttp3:logging-interceptor:$okHttp"
+    compile "com.squareup.retrofit2:retrofit:$retrofit"
+    compile "com.squareup.retrofit2:converter-jackson:$retrofit"
+    compile "com.squareup.retrofit2:converter-gson:$retrofit"
 
     testImplementation 'junit:junit:4.12'
 }

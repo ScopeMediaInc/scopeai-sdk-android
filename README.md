@@ -19,7 +19,7 @@ Add the following to the dependencies section of your `build.gradle`:
 ```groovy
 // Add the client to your dependencies:
 dependencies {
-    compile 'com.scopemedia.scopecheck:android-sdk:1.0.1'
+    compile 'com.scopemedia.scopeai:android-sdk:1.2.0'
 }
 
 // Make sure you have the Maven Local Repository in your Gradle File
@@ -34,26 +34,26 @@ Add the following to your dependencies:
 
 ```xml
 <dependency>
-  <groupId>com.scopemedia.scopecheck</groupId>
+  <groupId>com.scopemedia.scopeai</groupId>
   <artifactId>android-sdk</artifactId>
-  <version>1.0.1</version>
+  <version>1.2.0</version>
 </dependency>
 ```
 
 Getting Started
 ---------------
-Get your Client ID and Client Secret [here](https://api.scopemedia.com/#/dashboard/products/ScopeCheck/)
+Get your Client ID and Client Secret [here](https://api.scopemedia.com/#/dashboard/products/ScopeAI/)
 
-To create a `ScopeCheckClient` instance with an ID and secret do the following:
+To create a `ScopeAIClient` instance with an ID and secret do the following:
 
 ```java
-ScopeCheckClient client = new ScopeCheckBuilder(CLIENT_ID, CLIENT_SECRET).build();
+ScopeAIClient client = new ScopeAIBuilder(CLIENT_ID, CLIENT_SECRET).build();
 ```
 
 You can also enable the debug and set an debug level based on OkHttp3
 
 ```java
-ScopeCheckClient client = new ScopeCheckBuilder(CLIENT_ID, CLIENT_SECRET)
+ScopeAIClient client = new ScopeAIBuilder(CLIENT_ID, CLIENT_SECRET)
                 .setDebugMode(true)
                 .setDebugLevel(HttpLoggingInterceptor.Level.BODY)
                 .build();
@@ -71,7 +71,7 @@ PredictionRequest request = new PredictionRequest();
 request.setMediaUrl(imageUrl);
 request.setModelId("general-v3");
 
-client.getPrediction(request).performAsync(new ScopeCallback<PredictionResponse>() {
+client.getPrediction(request).performAsync(new ScopeAICallback<PredictionResponse>() {
     @Override
     public void onScopeResponse(PredictionResponse response) {
         Tag[] tags = response.getTags();

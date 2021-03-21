@@ -8,11 +8,12 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.1.2'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
     }
 }
 
-group = 'com.scopemedia.api'
-version = '1.0'
+group = 'com.scopemedia.scopeai'
+version = '1.2.0'
 
 allprojects {
     repositories {
@@ -21,19 +22,23 @@ allprojects {
     }
 }
 
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
 subprojects {
     tasks.withType(Javadoc).all { enabled = false }
 
     ext {
         versionCodeNum = 60
-        versionBuildTool = '29.0.2'
+        versionBuildTool = '25.0.2'
         versionCompiler = 24
         versionTarget = 24
         versionMinSdk = 14
-        javaSourceCompatibility = JavaVersion.VERSION_1_8
-        javaTargetCompatibility = JavaVersion.VERSION_1_8
+        javaSourceCompatibility = JavaVersion.VERSION_1_7
+        javaTargetCompatibility = JavaVersion.VERSION_1_7
 
-        okHttp = "4.9.0"
+        okHttp = "4.9.1"
         retrofit = "2.9.0"
     }
 }
